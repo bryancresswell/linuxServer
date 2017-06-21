@@ -63,13 +63,6 @@ __Public URL (IPv4):__ <http://ec2-54-255-235-252.ap-southeast-1.compute.amazona
 	2. Next, type `cd /var/www/` and then `sudo mkdir ItemCatalog`. Once done, type `cd ItemCatalog` and then type `git clone https://github.com/YOUR_USER/YOUR_REPOSITORY_NAME.git`
 	3. Once done, follow the steps provided by [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps) to set up your Flask app on the server.
 
-	8.1 **Debugging**
-		1. Take note, there is an error with your app when you receive a 500 Internal Server Error response when you navigate to your home page. Try to debug until you get what you are supposed to see. Also, do look in the logs at `/var/log/apache2/error.log` to get a better idea of what's wrong.
-		2. While following the steps listed above, there might be times when you run into trouble. If you get the error message saying that you do not have a particular module, e.g `ImportError: No module requests found`, type sudo -H pip install <NAME_OF_MODULE>. The -H parameter in sudo is to install the package for all users. 
-		3. The app might have trouble finding your `client_secrets.json` file, and so simply put the absolute path into your code. For example, instead of `client_secrets.json`, type `/var/www/ItemCatalog/ItemCatalog/client_secrets.json`. 
-		4. Do not forget to update your `client_secrets.json` file to enable OAuth. Since this app is only using Google Accounts, navigate to the project page, and then change the Authorized Javascript Origin to the public address, e.g. `http://ec2-54-255-235-252.ap-southeast-1.compute.amazonaws.com`. Change the redirect URL to `http://ec2-54-255-235-252.ap-southeast-1.compute.amazonaws.com/catalog/`, then replace the `client_secrets.json` file with the new file. If you can't figure out your hostname, key in your IP address at th:is website [here](http://www.hcidata.info/host2ip.cgi).
-		5. If you get an SQLAlchemy related error, it's either the fact that you haven't installed the module, or because you haven't modified the parameters in `create_engine()`. I will address this later.
-
 9. **Setting up PostgreSQL on the instance**
 	1. Start off by typing `sudo apt-get install postgresql postgresql-contrib`
 	2. On installation, PostgreSQL creates a user named `postgres`. Change to the user using `sudo su - postgres` and then type `psql` in the terminal.
@@ -80,7 +73,14 @@ __Public URL (IPv4):__ <http://ec2-54-255-235-252.ap-southeast-1.compute.amazona
 	7. Once you have modified all scripts with the above change, run your database script with `python database_setup.py` and your test data with `python test_data.py`
 	8. Once ready, restart Apache with `sudo service apache2 restart`
 
-10. **Launch the App**
+10 **Debugging**
+		1. Take note, there is an error with your app when you receive a 500 Internal Server Error response when you navigate to your home page. Try to debug until you get what you are supposed to see. Also, do look in the logs at `/var/log/apache2/error.log` to get a better idea of what's wrong.
+		2. While following the steps listed above, there might be times when you run into trouble. If you get the error message saying that you do not have a particular module, e.g `ImportError: No module requests found`, type sudo -H pip install <NAME_OF_MODULE>. The -H parameter in sudo is to install the package for all users. 
+		3. The app might have trouble finding your `client_secrets.json` file, and so simply put the absolute path into your code. For example, instead of `client_secrets.json`, type `/var/www/ItemCatalog/ItemCatalog/client_secrets.json`. 
+		4. Do not forget to update your `client_secrets.json` file to enable OAuth. Since this app is only using Google Accounts, navigate to the project page, and then change the Authorized Javascript Origin to the public address, e.g. `http://ec2-54-255-235-252.ap-southeast-1.compute.amazonaws.com`. Change the redirect URL to `http://ec2-54-255-235-252.ap-southeast-1.compute.amazonaws.com/catalog/`, then replace the `client_secrets.json` file with the new file. If you can't figure out your hostname, key in your IP address at this website [here](http://www.hcidata.info/host2ip.cgi).
+		5. If you get an SQLAlchemy related error, it's either the fact that you haven't installed the module, or because you haven't modified the parameters in `create_engine()`.
+
+11. **Launch the App**
 	1. Check that your app is running fine on your public URL, which is <http://ec2-54-255-235-252.ap-southeast-1.compute.amazonaws.com/catalog/> for me.
 
 ## Acknowledgements
