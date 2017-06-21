@@ -5,7 +5,9 @@ Full Stack Nanodegree Program Project #7. Tasked with setting up a Linux server 
 ## Important Details
 
 __Public IP Address:__ 54.255.235.252
+<br>
 __SSH Port:__ 2200
+<br>
 __Public URL (IPv4):__ <http://ec2-54-255-235-252.ap-southeast-1.compute.amazonaws.com/catalog/>
 
 ## Steps Taken
