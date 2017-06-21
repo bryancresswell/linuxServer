@@ -73,7 +73,7 @@ __Public URL (IPv4):__ <http://ec2-54-255-235-252.ap-southeast-1.compute.amazona
 	7. Once you have modified all scripts with the above change, run your database script with `python database_setup.py` and your test data with `python test_data.py`
 	8. Once ready, restart Apache with `sudo service apache2 restart`
 
-10 **Debugging**
+10. **Debugging**
 	1. Take note, there is an error with your app when you receive a 500 Internal Server Error response when you navigate to your home page. Try to debug until you get what you are supposed to see. Also, do look in the logs at `/var/log/apache2/error.log` to get a better idea of what's wrong.
 	2. While following the steps listed above, there might be times when you run into trouble. If you get the error message saying that you do not have a particular module, e.g `ImportError: No module requests found`, type sudo -H pip install <NAME_OF_MODULE>. The -H parameter in sudo is to install the package for all users. 
 	3. The app might have trouble finding your `client_secrets.json` file, and so simply put the absolute path into your code. For example, instead of `client_secrets.json`, type `/var/www/ItemCatalog/ItemCatalog/client_secrets.json`. 
